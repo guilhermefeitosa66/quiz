@@ -1,0 +1,47 @@
+<% if has_quiz_selected? %>
+<ul class="nav navbar-nav">
+  <li>
+    <%= link_to questions_path do %>
+      <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+      Questões
+      [<%= current_quiz.name %>]
+    <% end %>
+  </li>
+
+  <li>
+    <%= link_to deselect_quiz_path, method: :delete do %>
+      <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+      Finalizar alterações do quiz
+    <% end %>
+  </li>
+</ul>
+<% end %>
+
+<ul class="nav navbar-nav pull-right">
+  <% if current_user.admin %>
+    <li><%= link_to 'Inicio', root_path %></li>
+    <li><%= link_to 'Quizzes', quizzes_path %></li>
+  <% else %>
+    <li><%= link_to 'Quizzes', quizzes_path %></li>
+  <% end %>
+  <li class="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+      <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+      <%= current_user.name %>
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <%= link_to edit_user_registration_path do %>
+          <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+          Editar perfil
+        <% end %>
+
+        <%= link_to destroy_user_session_path, method: :delete do %>
+          <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+          Sair
+        <% end %>
+      </li>
+    </ul>
+  </li>
+</ul>

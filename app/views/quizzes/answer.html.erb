@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <div class="progress progress-responsive">
+        <div class="progress-bar progress-bar-quiz" style="width: <%= @user_quiz.percent_answered %>%;">
+        </div>
+      </div>
+
+      <p class="center progress-text"><%= @user_quiz.percent_answered %>%</p>
+    </div>
+
+    <% if @choice.correct %>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 description">
+      <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <h2><strong>Parabéns!</strong> você acertou! :)</h2>
+      </div>
+    </div>
+    <% else %>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 description">
+      <div class="alert alert-danger">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <h2><strong>Que pena!</strong> você não acertou! :(</h2>
+      </div>
+    </div>
+    <% end %>
+
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <div class="description">
+        <%= raw @question.explanation %>
+      </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <hr>
+      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+        <%= link_to 'Parar um pouco!', quizzes_path, class: 'btn btn-lg btn-default' %>
+      </div>
+
+      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+        <%= link_to 'Continuar', answers_quiz_path(@question.quiz.id), class: 'btn btn-lg btn-success pull-right' %>
+      </div>
+    </div>
+  </div>
+</div>

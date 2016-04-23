@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <div class="progress progress-responsive">
+        <div class="progress-bar progress-bar-quiz" style="width: <%= @user_quiz.percent_answered %>%;">
+        </div>
+      </div>
+
+      <p class="center progress-text"><%= @user_quiz.percent_answered %>%</p>
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <div class="description">
+        <%= raw @question.description %>
+      </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <hr>
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <%= form_for UserChoice.new, url: answer_quiz_path(@question.quiz.id), method: 'post' do |f| %>
+        <% @question.choices.each do |choice| %>
+          <div class="form-group">
+            <%= f.radio_button :choice_id, choice.id, class: 'radio', required: true %>
+            <%= f.label "choice_id_#{choice.id}", class: 'quiz-radio' do %><%= choice.description %><% end %>
+          </div>
+        <% end %>
+
+        <div class="form-group pull-right">
+          <a class="btn btn-lg btn-success from-control" data-toggle="modal" href='#modal-id'>Responder</a>
+        </div>
+
+        <!-- modal -->
+        <div class="modal fade" id="modal-id">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-body">
+                <h1>Confirmar resposta?</h1>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="submit" class="btn btn-success">Confirmar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- fim modal -->
+      <% end %>
+    </div>
+  </div>
+</div>

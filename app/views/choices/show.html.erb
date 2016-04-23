@@ -1,0 +1,55 @@
+<!-- NAVBAR -->
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <!-- agrupar para mobile -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-submenu-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to "Choices", choices_path, class: 'navbar-brand' %>
+    </div>
+  
+    <!-- links da navbar -->
+    <div class="collapse navbar-collapse navbar-submenu-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <p class="navbar-btn">
+          <%= link_to choices_path, class: 'btn btn-default' do %>
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            Voltar
+          <% end %>
+
+          <%= link_to edit_choice_path(@choice), class: 'btn btn-default' do %>
+            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+            Editar
+          <% end %>
+          </p>
+        </li>
+      </ul>
+    </div>
+    <!-- /.navbar-collapse -->
+  </div>
+</nav>
+<!-- /NAVBAR -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <p>
+        <strong>Description:</strong>
+        <%= @choice.description %>
+      </p>
+            <p>
+        <strong>Correct:</strong>
+        <%= @choice.correct %>
+      </p>
+            <p>
+        <strong>Question:</strong>
+        <%= @choice.question %>
+      </p>
+          </div>
+  </div>
+</div>

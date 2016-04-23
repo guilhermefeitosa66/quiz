@@ -1,0 +1,28 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 center">
+      <h1>Escolha um questionário de avaliação!</h1>
+      <hr>
+
+      <% @quizzes.each do |quiz| %>
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 center" style="margin-bottom: 1em;">
+          <%= link_to answers_quiz_path(quiz.id), class: 'btn btn-lg btn-warning btn-circle' do %>
+            <%= quiz.name %>
+          <% end %>
+
+          <% user_quiz = quiz.user_quizzes.where(user_id: current_user.id).first %>
+
+          <% unless user_quiz.nil? %>
+            <div class="progress">
+              <div class="progress-bar progress-bar-quiz" style="width: <%= user_quiz.percent_answered %>%;">
+              </div>
+            </div>
+
+            <p class="center progress-text"><%= user_quiz.percent_answered %>%</p>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

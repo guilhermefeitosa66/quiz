@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="row">
+    <%= form_for(@question, html: {class: "form-horizontal form-post", role: "form"}) do |f| %>
+
+    <% if @question.errors.any? %>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <div class="alert alert-danger">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <p><strong>Wops!</strong></p>
+        <ul>
+          <% @question.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+    <% end %>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <div class="form-group">
+        <%= f.label :description %>
+        <%= f.bootsy_area :description, rows: 6, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :explanation %>
+        <%= f.bootsy_area :explanation, rows: 6, class: 'form-control' %>
+      </div>
+
+      <h3>Alternativas</h3>
+      <hr>
+      <table class="table table-bordered table-zebra">
+        <%= f.fields_for :choices do |ff| %>
+          <tr>
+            <td>
+              <div class="form-table">
+                <%= ff.label :description %>
+                <%= ff.text_area :description, class: 'form-control' %>
+              </div>
+
+              <div class="form-table">
+                <%= ff.check_box :correct, class: 'checkbox-custom' %>
+                <%= ff.label :correct, class: 'checkbox-custom-label' %>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+
+      <div class="form-group">
+        <%= f.button type: 'submit', class: 'btn btn-primary' do %>
+        <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>
+        Salvar
+        <% end %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>    
+
+<script type="text/javascript">
+  var text = $("#question_description").val();
+  //alert(text);
+</script>
