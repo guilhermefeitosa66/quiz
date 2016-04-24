@@ -20,6 +20,12 @@
             </div>
 
             <p class="center progress-text"><%= user_quiz.percent_answered %>%</p>
+
+            <% if user_quiz.done? %>
+              <hr class="center progress-text">
+              <p class="center progress-text">Corretas: <%= user_quiz.total_correct %></p>
+              <p class="center progress-text">Incorretas: <%= user_quiz.total_wrong %></p>
+            <% end %>
           <% end %>
         </div>
       <% end %>

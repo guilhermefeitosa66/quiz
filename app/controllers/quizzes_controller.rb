@@ -1,6 +1,8 @@
 class QuizzesController < ApplicationController
   before_action :set_quiz, only: [:show, :edit, :update, :destroy, :select_quiz]
 
+  before_action :admin_permission, except: [:index, :answers, :answer]
+
   def index
     @quizzes = Quiz.all
 
@@ -54,6 +56,7 @@ class QuizzesController < ApplicationController
   end
 
   def show
+    @user_quizzes = UserQuiz.where(quiz_id: @quiz.id)
   end
 
   def new

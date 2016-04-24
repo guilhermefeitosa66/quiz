@@ -2,6 +2,7 @@ class QuestionsController < ApplicationController
   include QuizzesHelper
 
   before_action :set_question, only: [:show, :edit, :update, :destroy]
+  before_action :admin_permission, except: []
 
   before_filter except: [] do
     unless has_quiz_selected?

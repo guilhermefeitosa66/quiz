@@ -1,30 +1,30 @@
 en:
   bootsy:
     action:
-      refresh: Refresh
-      destroy: Delete
-      close: Close
-      load: Load
-      or: or
-      upload: Upload New Image
-      submit_upload: Go
-      enter_image_url: Enter a URL from the web...
-    image_gallery: Image Gallery
+      refresh: Atualizar
+      destroy: Deletar
+      close: Fechar
+      load: Carregar
+      or: ou
+      upload: Enviar uma nova imagem
+      submit_upload: Vai
+      enter_image_url: Entre com uma URL da web...
+    image_gallery: Galeria de imagens
     image:
-      s: Image
-      p: Images
-      size: Size
-      large: Large
-      medium: Medium
-      small: Small
+      s: Imagem
+      p: Imagens
+      size: Tamanho
+      large: Grande
+      medium: Médio
+      small: Pequeno
       original: Original
-      new: New image
+      new: Nova imagem
       confirm:
-        destroy: Are you sure you want to delete this image?
+        destroy: Você tem certeza que quer deletar essa imagem?
       position:
-        left: Left
-        right: Right
-        inline: Inline
-    no_images_uploaded: There are currently no uploaded images.
+        left: Esquerda
+        right: Direita
+        inline: Na linhado texto
+    no_images_uploaded: Não há nenhuma imagem enviada.
     js:
-      alert_unsaved: You have unsaved changes.
+      alert_unsaved: Você não salvou as alterações.

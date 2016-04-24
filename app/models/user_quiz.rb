@@ -58,4 +58,8 @@ class UserQuiz < ActiveRecord::Base
       return current_question * 100 / total_questions
     end
   end
+
+  def done?
+    return current_question >= total_questions
+  end
 end

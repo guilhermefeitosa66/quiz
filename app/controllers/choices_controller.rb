@@ -1,6 +1,8 @@
 class ChoicesController < ApplicationController
   before_action :set_choice, only: [:show, :edit, :update, :destroy]
 
+  before_action :admin_permission, except: []
+
   # GET /choices
   # GET /choices.json
   def index

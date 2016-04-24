@@ -1,0 +1,17 @@
+pt-BR:
+  hello: "Hello world"
+  activerecord:
+    attributes:
+      user:
+        name: Nome
+        email: E-mail
+        password: Senha
+        password_confirmation: Confirme a senha
+        remember_me: Lembrar meus dados
+        current_password: Senha atual
+      question:
+        description: Questão
+        explanation: Explicação
+      choice:
+        description: Alternativa
+        correct: Correta

@@ -38,10 +38,69 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <p>
-        <strong>Name:</strong>
+      <h3 class="well">
         <%= @quiz.name %>
-      </p>
-          </div>
+      </h3>
+      <p><strong>Número de questões:</strong> <%= @quiz.questions.count %></p>
+      <p><strong>Número de participantes:</strong> <%= @user_quizzes.count %></p>
+      <hr>
+    </div>
+    
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <h4 class="well"><strong>Participantes</strong></h4>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Corretas</th>
+            <th>Icorretas</th>
+            <th>Corretas (%)</th>
+            <th>Icorretas (%)</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @user_quizzes.each do |user_quiz| %>
+            <tr>
+              <td><%= user_quiz.user.name %></td>
+              <td><%= user_quiz.user.email %></td>
+              <td><%= user_quiz.total_correct %></td>
+              <td><%= user_quiz.total_wrong %></td>
+              <td><%= user_quiz.percent_correct %>%</td>
+              <td><%= user_quiz.percent_wrong %>%</td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <h4 class="well"><strong>Questões</strong></h4>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Questões</th>
+            <th>Corretas</th>
+            <th>Icorretas</th>
+            <th>Corretas (%)</th>
+            <th>Icorretas (%)</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @quiz.questions.each do |question| %>
+            <% statistics = question.statistics %>
+            <tr>
+              <td><%= truncate(question.description, length: 100, separator: '...') %></td>
+              <td><%= statistics[:corrects] %></td>
+              <td><%= statistics[:wrongs] %></td>
+              <td><%= statistics[:percent_correct] %>%</td>
+              <td><%= statistics[:percent_wrong] %>%</td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>

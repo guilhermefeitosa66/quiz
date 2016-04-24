@@ -1,7 +1,8 @@
 class StaticsController < ApplicationController
   before_action :choose_index, only: [:index]
   
-  def index
+  def home_page
+    render 'statics/index'
   end
 
   private
