@@ -2,7 +2,7 @@ class Question < ActiveRecord::Base
   include Bootsy::Container
   
   belongs_to :quiz
-  has_many :choices
+  has_many :choices, dependent: :destroy
 
   accepts_nested_attributes_for :choices
 

@@ -1,7 +1,7 @@
 class UserQuiz < ActiveRecord::Base
   belongs_to :user
   belongs_to :quiz
-  has_many :user_choices
+  has_many :user_choices, dependent: :destroy
 
   def total_questions
     return self.quiz.questions.count

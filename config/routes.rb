@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   }
 
   get '/quizzes/:id/answers', to: 'quizzes#answers', as: 'answers_quiz'
+  get '/quizzes/:id/clean', to: 'quizzes#clean', as: 'clean_quiz'
   post '/quizzes/:id/answer', to: 'quizzes#answer', as: 'answer_quiz'
 
 end

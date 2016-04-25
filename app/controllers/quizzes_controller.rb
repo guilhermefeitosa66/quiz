@@ -1,5 +1,5 @@
 class QuizzesController < ApplicationController
-  before_action :set_quiz, only: [:show, :edit, :update, :destroy, :select_quiz]
+  before_action :set_quiz, only: [:show, :edit, :update, :destroy, :select_quiz, :clean]
 
   before_action :admin_permission, except: [:index, :answers, :answer]
 
@@ -57,6 +57,11 @@ class QuizzesController < ApplicationController
 
   def show
     @user_quizzes = UserQuiz.where(quiz_id: @quiz.id)
+  end
+
+  def clean
+    @quiz.user_quizzes.destroy_all
+    redirect_to @quiz
   end
 
   def new
