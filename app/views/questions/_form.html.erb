@@ -34,7 +34,7 @@
             <td>
               <div class="form-table">
                 <%= ff.label :description %>
-                <%= ff.text_area :description, class: 'form-control' %>
+                <%= ff.text_area :description, class: 'form-control', onkeyup: "textAreaAdjust(this)", style: "overflow:hidden" %>
               </div>
 
               <div class="form-table">
@@ -58,6 +58,9 @@
 </div>    
 
 <script type="text/javascript">
-  var text = $("#question_description").val();
-  //alert(text);
+  function textAreaAdjust(o)
+  {
+    o.style.height = "1px";
+    o.style.height = (25+o.scrollHeight)+"px";
+  }
 </script>
