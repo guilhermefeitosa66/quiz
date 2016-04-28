@@ -20,9 +20,14 @@ class Question < ActiveRecord::Base
       end
     end
 
-    total_questions = self.quiz.questions.count
-    percent_correct = corrects * 100 / total_questions
-    percent_wrong = wrongs * 100 / total_questions
+    participant_count = self.quiz.user_quizzes.count
+    percent_correct = 0
+    percent_wrong = 0
+
+    if participant_count > 0
+      percent_correct = corrects * 100 / participant_count
+      percent_wrong = wrongs * 100 / participant_count
+    end
 
     return { corrects: corrects, wrongs: wrongs, percent_correct: percent_correct, percent_wrong: percent_wrong }
   end

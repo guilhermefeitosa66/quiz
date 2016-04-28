@@ -143,9 +143,11 @@ input.radio:empty ~ label {
   position: relative;
   float: left;
   line-height: 2.5em;
-  text-indent: 3.25em;
+  /*text-indent: 3.25em;*/
   margin-top: 0;
   padding: 1em;
+  padding-left: 3.25em;
+  text-align: justify;
   cursor: pointer;
   -webkit-user-select: none;
   -moz-user-select: none;
