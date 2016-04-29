@@ -6,7 +6,8 @@ class Quiz < ActiveRecord::Base
     if question_number > self.questions.count || self.questions.count == 0
       return nil
     else
-      return self.questions[question_number]
+      q = self.questions.order(:id)
+      return q[question_number]
     end
   end
 end

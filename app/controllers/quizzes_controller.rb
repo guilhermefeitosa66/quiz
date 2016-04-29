@@ -4,7 +4,7 @@ class QuizzesController < ApplicationController
   before_action :admin_permission, except: [:index, :answers, :answer]
 
   def index
-    @quizzes = Quiz.all
+    @quizzes = Quiz.all.order(:id)
 
     unless current_user.admin
       render 'quizzes/user_quiz'

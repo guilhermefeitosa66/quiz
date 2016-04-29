@@ -6,6 +6,10 @@ class Question < ActiveRecord::Base
 
   accepts_nested_attributes_for :choices
 
+  def choices
+    Choice.where(question_id: self.id).order(:id)
+  end
+
   def statistics
     corrects = 0
     wrongs = 0

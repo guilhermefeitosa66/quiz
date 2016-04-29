@@ -11,7 +11,7 @@ class QuestionsController < ApplicationController
   end
 
   def index
-    @questions = Question.where(quiz_id: current_quiz_id)
+    @questions = Question.where(quiz_id: current_quiz_id).order(:id)
   end
 
   def show
