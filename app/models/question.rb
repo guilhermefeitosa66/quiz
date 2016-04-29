@@ -10,8 +10,9 @@ class Question < ActiveRecord::Base
     if self.new_record?
       c = []
       4.times { c << Choice.new }
+      return c
     else
-      Choice.where(question_id: self.id).order(:id)
+      return Choice.where(question_id: self.id).order(:id)
     end
   end
 
