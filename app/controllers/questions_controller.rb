@@ -19,7 +19,6 @@ class QuestionsController < ApplicationController
 
   def new
     @question = Question.new
-    4.times { @question.choices.build }
   end
 
   def edit

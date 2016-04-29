@@ -7,7 +7,12 @@ class Question < ActiveRecord::Base
   accepts_nested_attributes_for :choices
 
   def choices
-    Choice.where(question_id: self.id).order(:id)
+    if self.new_record?
+      c = []
+      4.times { c << Choice.new }
+    else
+      Choice.where(question_id: self.id).order(:id)
+    end
   end
 
   def statistics
